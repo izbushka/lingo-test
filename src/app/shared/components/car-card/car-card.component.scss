@@ -23,6 +23,9 @@
     font-size: 30px;
   }
 
+  .speed {
+    margin-bottom: 10px;
+  }
   .about {
     text-align: left;
     border-bottom: 1px solid #d8d8d8;
@@ -31,9 +34,14 @@
   }
 
   .desc {
-    text-overflow: ellipsis;
+    //text-overflow: ellipsis;
+    //overflow: hidden;
+    //max-height: 2em;
     overflow: hidden;
-    max-height: 2em;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .btn {

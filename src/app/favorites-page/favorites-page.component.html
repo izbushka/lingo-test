@@ -1,4 +1,5 @@
-<app-loader *ngIf="!cars.length"></app-loader>
+<app-loader *ngIf="!cars"></app-loader>
+<div *ngIf="!cars.length">Nothing is here yet. Add some items <a routerLink="/">there</a></div>
 
 <div class="favourite-cars" *ngIf="cars.length">
   <app-car-card *ngFor="let car of cars" [car]="car"></app-car-card>

@@ -10,7 +10,7 @@ import {takeWhile} from 'rxjs/operators';
 })
 export class FavoritesPageComponent implements OnInit, OnDestroy {
   isAlive = true;
-  cars: Car[] = [];
+  cars: Car[];
 
   constructor(private carsService: CarsService) { }
 
