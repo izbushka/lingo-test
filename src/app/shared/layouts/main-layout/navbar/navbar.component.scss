@@ -1,0 +1,29 @@
+.car {
+  width: 100%;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .btn {
+    display: none;
+    background: white;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
+
+  &:hover {
+    .btn {
+      float: right;
+      display: inline-block;
+    }
+  }
+}

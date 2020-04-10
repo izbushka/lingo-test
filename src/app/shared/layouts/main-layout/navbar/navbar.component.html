@@ -1,4 +1,10 @@
 <div routerLink="/">Home</div>
 <div routerLink="/favorites">Favorites</div>
 <hr>
-
+<div *ngFor="let car of favorites" class="car">
+  <span class="icon">
+    <img src="/assets/cars/{{car.id}}.png">
+  </span>
+  {{car.vendor}}
+  <span class="btn">&times;</span>
+</div>
