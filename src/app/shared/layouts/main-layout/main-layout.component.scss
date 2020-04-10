@@ -1,0 +1,27 @@
+$header-height: 50px;
+$sidebar-width: 150px;
+
+.top-header {
+  background: #f2b702;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $header-height;
+  width: 100%;
+}
+
+.sidebar {
+  background: #05b3d9;
+  width: $sidebar-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  margin-top: $header-height;
+  padding: 10px;
+}
+
+.content {
+  margin: $header-height 0 0 $sidebar-width;
+  padding: 20px;
+}
