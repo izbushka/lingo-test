@@ -1,4 +1,4 @@
-<app-loader *ngIf="!cars.length">aa</app-loader>
+<app-loader *ngIf="!cars.length"></app-loader>
 
 <div class="cars-list" *ngIf="cars.length">
   <app-car-card *ngFor="let car of cars" [car]="car"></app-car-card>

@@ -7,7 +7,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MainLayoutComponent } from './shared/layouts/main-layout/main-layout.component';
 import { NavbarComponent } from './shared/layouts/main-layout/navbar/navbar.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
-import { CarCardComponent } from './home-page/car-card/car-card.component';
+import { CarCardComponent } from './shared/components/car-card/car-card.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 

@@ -1,1 +1,6 @@
-<p>favorites-page works!</p>
+<app-loader *ngIf="!cars.length"></app-loader>
+
+<div class="favourite-cars" *ngIf="cars.length">
+  <app-car-card *ngFor="let car of cars" [car]="car"></app-car-card>
+</div>
+

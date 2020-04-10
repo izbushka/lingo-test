@@ -31,4 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.isAlive = false;
   }
 
+  remove(id: number): void {
+    this.carsService.removeFromFavorites(id);
+  }
 }

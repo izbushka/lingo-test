@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 
 import CarsMockData from '../../cars-model.json';
@@ -17,21 +17,18 @@ export class CarsService {
   constructor(private storage: AppStorageService) {
     const stored = this.storage.get('session', 'favorites');
     if (stored) {
-      console.log('got', stored);
       this.favorites$.next(stored);
     }
     this.favorites$.pipe(
       skip(1)
     ).subscribe(data => {
-      console.log('saving', data);
       this.storage.set('session', 'favorites', data);
     });
+
+    this._httpGetCars().subscribe(data => this.cars$.next(data));
   }
 
   getCars(): BehaviorSubject<Car[]> {
-    if (this.cars$.getValue().length === 0) { // first call -> get ajax data
-      this._httpGetCars().subscribe(data => this.cars$.next(data));
-    }
     return this.cars$;
   }
 

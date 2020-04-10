@@ -1,7 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Car} from '../../shared/interfaces/car';
-import {CarsService} from '../../shared/services/cars.service';
+import {Car} from '../../interfaces/car';
+import {CarsService} from '../../services/cars.service';
 import {takeWhile} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-car-card',
@@ -12,11 +13,16 @@ export class CarCardComponent implements OnInit, OnDestroy {
   isAlive = true;
   @Input() car: Car;
   favorite = false;
+  class = 'list';
 
-  constructor(private carsService: CarsService) {
+  constructor(
+    private carsService: CarsService,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {
+    this.class = this.route.snapshot.routeConfig.path;
     this.carsService.getFavorites().pipe(
       takeWhile(() => this.isAlive)
     ).subscribe(data => {
