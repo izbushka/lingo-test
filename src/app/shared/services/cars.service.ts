@@ -1,10 +1,11 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 
 import CarsMockData from '../../cars-model.json';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Car} from '../interfaces/car';
-import {delay} from 'rxjs/operators';
+import {delay, filter, skip, switchMapTo} from 'rxjs/operators';
+import {AppStorageService} from './app-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,18 @@ export class CarsService {
   private cars$: BehaviorSubject<Car[]> = new BehaviorSubject([]);
   private favorites$: BehaviorSubject<number[]> = new BehaviorSubject([]);
 
-  constructor() {
+  constructor(private storage: AppStorageService) {
+    const stored = this.storage.get('session', 'favorites');
+    if (stored) {
+      console.log('got', stored);
+      this.favorites$.next(stored);
+    }
+    this.favorites$.pipe(
+      skip(1)
+    ).subscribe(data => {
+      console.log('saving', data);
+      this.storage.set('session', 'favorites', data);
+    });
   }
 
   getCars(): BehaviorSubject<Car[]> {
@@ -24,13 +36,14 @@ export class CarsService {
   }
 
   getCar(id: number): Car {
-    const car = this.cars$.getValue().filter(item => item.id === id).shift();
-    return car;
-    // return this.cars$.getValue().filter(car => car.id === id).shift();
+    return this.cars$.getValue().filter(item => item.id === id).shift();
   }
 
-  getFavorites(): BehaviorSubject<number[]> {
-    return this.favorites$;
+  getFavorites(): Observable<number[]> {
+    return this.cars$.pipe( // wait for cars data before returning favorites
+      filter(data => !!data.length),
+      switchMapTo(this.favorites$)
+    );
   }
 
   addToFavorites(id: number): void {

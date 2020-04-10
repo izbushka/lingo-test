@@ -9,6 +9,7 @@ import { NavbarComponent } from './shared/layouts/main-layout/navbar/navbar.comp
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { CarCardComponent } from './home-page/car-card/car-card.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,15 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     NavbarComponent,
     FavoritesPageComponent,
     CarCardComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxWebstorageModule.forRoot()
+  ],
+  exports: [
+    NgxWebstorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

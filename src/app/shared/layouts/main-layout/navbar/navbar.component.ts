@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CarsService} from '../../../services/cars.service';
 import {Car} from '../../../interfaces/car';
-import {takeWhile} from 'rxjs/operators';
+import {filter, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
