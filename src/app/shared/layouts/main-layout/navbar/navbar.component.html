@@ -1,13 +1,13 @@
 <div class="links" routerLink="/" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
 true}">
   <span class="icon">
-    <img src="/assets/icons/home.png">
+    <img src="assets/icons/home.png">
   </span>
   Home
 </div>
 <div class="links" routerLink="/favorites" routerLinkActive="selected">
   <span class="icon">
-    <img src="/assets/icons/favorite.png">
+    <img src="assets/icons/favorite.png">
   </span>
   Favorites
 </div>
@@ -17,7 +17,7 @@ true}">
 
   <div *ngFor="let car of favorites" class="car">
     <span class="icon">
-      <img src="/assets/cars/{{car.id}}.png">
+      <img src="assets/cars/{{car.id}}.png">
     </span>
     {{car.vendor}}
     <span class="btn" (click)="remove(car.id)">&times;</span>

@@ -50,12 +50,12 @@
     width: 30px;
     height: 30px;
     background-size: contain;
-    background-image: url('/assets/icons/star.png');
+    background-image: url('~/assets/icons/star.png');
   }
 
   &.selected {
     .btn {
-      background-image: url('/assets/icons/star-add.png');
+      background-image: url('~/assets/icons/star-add.png');
     }
   }
 }
